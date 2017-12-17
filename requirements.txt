@@ -1,1 +1,8 @@
 Django==2.0
+path.py==7.7.1
+python==3.6.3
+appdirs==1.4.3
+packaging==16.8
+djangorestframework
+markdown
+django-filter

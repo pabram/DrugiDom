@@ -9,7 +9,8 @@ class Resident(models.Model):
     room = models.ForeignKey('Room', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return self.user.name
+        return self.user.get_username()
+        
 
 
 class Guest(models.Model):
@@ -17,7 +18,7 @@ class Guest(models.Model):
     address = models.TextField()
 
     def __str__(self):
-        return self.user.name
+        return self.user.get_username()
 
 
 class StaffMember(models.Model):
@@ -27,7 +28,7 @@ class StaffMember(models.Model):
     dorms = models.ForeignKey('Dorm', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return self.user.name
+        return self.user.get_username()
 
 
 class Visit(models.Model):
@@ -90,3 +91,23 @@ class DeviceType(models.Model):
 
     def __str__(self):
         return self.name
+
+class DocumentType(models.Model):
+    name = models.CharField(max_length = 45)
+    priority = models.CharField(max_length = 45)
+    template = models.CharField(max_length = 45)
+
+    def __str__(self):
+        return self.name
+
+class Document(models.Model):
+    name = models.CharField(max_length = 45)
+    content = models.CharField(max_length = 45)
+    case_status = models.CharField(max_length = 45)
+    staffMember = models.ForeignKey('StaffMember', on_delete=models.SET_NULL, null=True)
+    resident = models.ForeignKey('Resident', on_delete=models.SET_NULL, null=True)
+    documentType = models.ForeignKey('DocumentType', on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.name
+    
