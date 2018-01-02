@@ -1,7 +1,12 @@
-from django.urls import path
-from . import views
+from django.urls import path, include
+from .views import DocumentViewSet
+from .models import Document
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'documents', DocumentViewSet)
 
 urlpatterns = [
-    path('index/', views.index),
-    path('documents/', views.documents)
+    path(r'', include(router.urls)),
+    path(r'api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
