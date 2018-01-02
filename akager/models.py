@@ -10,7 +10,6 @@ class Resident(models.Model):
 
     def __str__(self):
         return self.user.get_username()
-        
 
 
 class Guest(models.Model):

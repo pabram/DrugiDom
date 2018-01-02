@@ -6,14 +6,15 @@
 
 To start project:
 
-:::java
+```python
 ./install_requirements.sh && python manage.py migrate
 python manage.py runserver
-
+```
 After each `git pull` should apply new migrations
 
-:::java
+```python
 python manage.py migrate
+```
 
 ### HTTP statuses
 
